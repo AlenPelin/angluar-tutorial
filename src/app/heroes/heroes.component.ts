@@ -5,8 +5,7 @@ import { HeroService } from '../hero.service';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css'],
-  
+  styleUrls: ['./heroes.component.css'] 
 })
 export class HeroesComponent implements OnInit {
 
@@ -18,8 +17,9 @@ export class HeroesComponent implements OnInit {
 
   selectedHero: Hero = null;
 
-  ngOnInit() {
-    this.heroes = this.heroService.Heroes;
+  async ngOnInit() {
+    this.heroService.Heroes
+      .subscribe(x => this.heroes = x);
   }
 
   onSelect(hero: Hero) {
