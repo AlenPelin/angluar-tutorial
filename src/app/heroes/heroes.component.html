@@ -1,23 +1,6 @@
-<h2>{{hero.name | uppercase}} Details</h2>
-<p>The hero with name <b>{{hero.name}}</b> has hero registration number #<b>{{hero.id}}</b>.</p>
-<p>Knowing this ID it is easy to find hero's name.</p>
-<div>
-  <table>
-    <tr>
-      <td>
-        <label for="name">name:</label>
-      </td>
-      <td>
-        <input name="name" [(ngModel)]="hero.name" placeholder="name" />
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="id">id:</label>
-      </td>
-      <td>
-        <input name="id" [(ngModel)]="hero.id" placeholder="id" />
-      </td>
-    </tr>
-  </table>
-</div>
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
