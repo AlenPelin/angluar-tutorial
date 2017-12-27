@@ -60,6 +60,16 @@ export class HeroService {
       );
   }
 
+  deleteHero(hero: Hero | number | string): Observable<Hero> {
+    const realHero = hero as Hero;
+    const id = realHero != null ? realHero.id : hero as number;
+
+    return this.http.delete<Hero>(`${this.heroesUrl}/${id}`)
+      .pipe(
+        tap(_ => this.log(`deleted heroe id=${id}`)),
+        catchError(this.handleError<Hero>(`deleteHero id=${id}`)));
+  }
+
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
   }
