@@ -70,6 +70,20 @@ export class HeroService {
         catchError(this.handleError<Hero>(`deleteHero id=${id}`)));
   }
 
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return new ArrayObservable([]);
+    }
+
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+      .pipe(
+        tap(_ => this.log(`found heroes matching "${term}"`)),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
+      );
+  }
+ 
+
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
   }
