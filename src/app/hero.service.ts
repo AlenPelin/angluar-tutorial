@@ -60,7 +60,7 @@ export class HeroService {
       );
   }
 
-  deleteHero(hero: Hero | number | string): Observable<Hero> {
+  deleteHero(hero: Hero | number): Observable<Hero> {
     const realHero = hero as Hero;
     const id = realHero != null ? realHero.id : hero as number;
 
