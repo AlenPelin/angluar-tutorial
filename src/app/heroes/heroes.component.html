@@ -5,28 +5,5 @@
     {{hero.name}}
   </li>
 </ul>
-<div *ngIf="selectedHero != null">
-  <h2>{{selectedHero.name | uppercase}} Details</h2>
-  <p>The hero with name <b>{{selectedHero.name}}</b> has hero registration number #<b>{{selectedHero.id}}</b>.</p>
-  <p>Knowing this ID it is easy to find hero's name.</p>
-  <div>
-    <table>
-      <tr>
-        <td>
-          <label for="name">name:</label>
-        </td>
-        <td>
-          <input name="name" [(ngModel)]="selectedHero.name" placeholder="name" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="id">id:</label>
-        </td>
-        <td>
-          <input name="id" [(ngModel)]="selectedHero.id" placeholder="id" />
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
